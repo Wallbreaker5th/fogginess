@@ -13,11 +13,16 @@ export class FUnit {
    * Creates a new FUnit instance.
    * @param exponents - The exponents for the basic units.
    */
-  constructor(exponents: Map<string, number>) {
-    this.exponents = [];
-    for (let i in BASIC_UNITS) {
-      let s: string = BASIC_UNITS[i];
-      this.exponents.push(exponents.get(s) || 0);
+  constructor(exponents: Map<string, number> | Array<number>) {
+    if (exponents instanceof Array) {
+      this.exponents = exponents;
+      return;
+    } else {
+      this.exponents = [];
+      for (let i in BASIC_UNITS) {
+        let s: string = BASIC_UNITS[i];
+        this.exponents.push(exponents.get(s) || 0);
+      }
     }
   }
 
@@ -91,6 +96,26 @@ export class FUnit {
     let res: FUnit = new FUnit(new Map());
     for (let i in BASIC_UNITS) {
       res.exponents[i] = this.exponents[i] * n;
+    }
+    return res;
+  }
+
+  /**
+   * Convert the Unit into a string
+   * @returns The string representation of the unit.
+   */
+  toString(): string {
+    let res: string = "";
+    for (let i in BASIC_UNITS) {
+      if (this.exponents[i] != 0) {
+        if (res != "") {
+          res += " ";
+        }
+        res += BASIC_UNITS[i];
+        if (this.exponents[i] != 1) {
+          res += "^" + this.exponents[i];
+        }
+      }
     }
     return res;
   }

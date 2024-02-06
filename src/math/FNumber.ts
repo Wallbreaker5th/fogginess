@@ -25,6 +25,14 @@ export class FNumber {
   }
 
   /**
+   * Checks if this number is a constant.
+   * @returns True if the number is a constant, false otherwise.
+   */
+  isConstant(): boolean {
+    return this.u == 0 && this.p == 1;
+  }
+
+  /**
    * Give a Node of mathjs and a Map<String, FNumber>, evaluates the node and returns an FNumber.
    * @param node The node to evaluate.
    * @param vars The variables to use in the evaluation.

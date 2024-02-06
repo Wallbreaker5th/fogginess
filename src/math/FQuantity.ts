@@ -141,4 +141,18 @@ export class FQuantity {
   equals(b: FQuantity, epsilon: number): boolean {
     return this.unit.equals(b.unit) && this.number.equals(b.number, epsilon);
   }
+
+  /**
+   * Converts this quantity to a string.
+   */
+  toString(): string {
+    if (this.number.isConstant()) {
+      return `${this.number.v.toPrecision(4)} ${this.unit.toString()}`;
+    } else {
+      return (
+        `${this.number.v.toPrecision(4)}±${this.number.u.toPrecision(4)} ` +
+        `${this.unit.toString()} (P=${this.number.p.toPrecision(4)})`
+      );
+    }
+  }
 }
