@@ -125,6 +125,44 @@ export class FQuantity {
   }
 
   /**
+   * Evaluates the given expression.
+   * The inputs might be arrays of FQuantity, or FQuantity.
+   * @param node - The expression to evaluate.
+   * @param vars - The inputs to use in the evaluation.
+   * @returns The result of the evaluation.
+   * @throws Error if the lengths of the inputs are not consistent
+   * @throws Error if there's error in the evaluation of the expression
+   */
+  static evalArray(
+    node: math.MathNode,
+    vars: Map<string, FQuantity | Array<FQuantity>>
+  ): FQuantity | Array<FQuantity> {
+    let array_length: number = -1;
+    for (const [key, value] of vars) {
+      if (value instanceof Array) {
+        if (array_length === -1) {
+          array_length = value.length;
+        } else if (array_length !== value.length) {
+          throw new Error("Array inputs must have the same length");
+        }
+      }
+    }
+    if (array_length === -1) {
+      return FQuantity.eval(node, vars as Map<string, FQuantity>);
+    } else {
+      const result = new Array<FQuantity>();
+      for (let i = 0; i < array_length; i++) {
+        const vars_i = new Map<string, FQuantity>();
+        for (const [key, value] of vars) {
+          vars_i.set(key, value instanceof Array ? value[i] : value);
+        }
+        result.push(FQuantity.eval(node, vars_i));
+      }
+      return result;
+    }
+  }
+
+  /**
    * Checks if this quantity is dimensionless.
    * @returns True if this quantity is dimensionless, false otherwise.
    */

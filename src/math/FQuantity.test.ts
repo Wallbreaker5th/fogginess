@@ -61,3 +61,34 @@ test("Eval with constants", () => {
   expect(() => FQuantity.eval(math.parse("a+d"), vars)).toThrow();
   expect(() => FQuantity.eval(math.parse("a^d"), vars)).toThrow();
 });
+
+test("Eval with arrays", () => {
+  let a = new FQuantity(3);
+  let b = new FQuantity(4);
+  let c = new Array<FQuantity>(
+    new FQuantity(5),
+    new FQuantity(6),
+    new FQuantity(7)
+  );
+  let d = new Array<FQuantity>(
+    new FQuantity(8),
+    new FQuantity(9)
+  );
+
+  const Vars = Map<string, FQuantity | Array<FQuantity>>;
+
+  let res1=FQuantity.evalArray(math.parse("a+b"), new Vars([["a", a], ["b", b]]));
+  expect(res1 instanceof FQuantity).toBe(true);
+  expect(res1 as FQuantity).toEqual(new FQuantity(7));
+
+  let res2=FQuantity.evalArray(math.parse("a+c"), new Vars([["a", a], ["c", c]]));
+  // It should be an array of FQuantity
+  expect(res2 instanceof Array).toBe(true);
+  expect(res2 as Array<FQuantity>).toEqual([
+    new FQuantity(8),
+    new FQuantity(9),
+    new FQuantity(10)
+  ]);
+
+  expect(() => FQuantity.evalArray(math.parse("c+d"), new Vars([["c", c], ["d", d]]))).toThrow();
+});
