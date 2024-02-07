@@ -155,4 +155,20 @@ export class FQuantity {
       );
     }
   }
+
+  /**
+   * Multiplies this quantity by another quantity.
+   * This function is mainly for calculations about units.
+   * @param b - The quantity to multiply by.
+   * @returns The result of the multiplication.
+   */
+  mul(b: FQuantity): FQuantity {
+    return FQuantity.eval(
+      math.parse("a*b"),
+      new Map([
+        ["a", this],
+        ["b", b],
+      ])
+    );
+  }
 }

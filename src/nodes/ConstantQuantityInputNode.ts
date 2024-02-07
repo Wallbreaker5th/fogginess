@@ -21,13 +21,7 @@ export default defineNode({
   },
   calculate({ value, unit }) {
     let output: FQuantity;
-    output = FQuantity.eval(
-      math.parse("a*b"),
-      new Map([
-        ["a", FNumber.constant(value)],
-        ["b", unit],
-      ])
-    );
+    output = unit.mul(new FQuantity(value));
     return { output };
   },
 });
