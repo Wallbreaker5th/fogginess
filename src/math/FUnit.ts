@@ -1,4 +1,4 @@
-const BASIC_UNITS = ["m", "s", "kg", "A", "K", "mol", "cd"];
+export const BASIC_UNITS = ["m", "s", "kg", "A", "K", "mol", "cd"];
 
 /**
  * Represents a unit with exponents for basic units.

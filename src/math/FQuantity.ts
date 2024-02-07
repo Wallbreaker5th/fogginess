@@ -14,13 +14,13 @@ export class FQuantity {
    * @param number - The number of the quantity. If a number is given, it is considered a constant.
    * @param unit - The unit of the quantity. If null, the unit is dimensionless.
    */
-  constructor(number: FNumber | number, unit: FUnit | null) {
+  constructor(number: FNumber | number, unit: FUnit = FUnit.one()) {
     if (number instanceof FNumber) {
       this.number = number;
     } else {
       this.number = FNumber.constant(number);
     }
-    this.unit = unit || FUnit.one();
+    this.unit = unit;
   }
 
   /**
