@@ -1,9 +1,7 @@
 import { defineNode, NodeInterface, NumberInterface, setType } from "baklavajs";
-import { UnitInterface } from "./UnitInterface.ts";
-import { FQuantity } from "../math/FQuantity.ts";
-import { FNumber } from "../math/FNumber.ts";
-import { quantityType } from "./InterfaceTypes.ts";
-import { math } from "../math/math.ts";
+import { UnitInterface } from "../interface/UnitInterface.ts";
+import { FQuantity } from "../../math/FQuantity.ts";
+import { quantityType } from "../InterfaceTypes.ts";
 
 export default defineNode({
   type: "ConstantQuantityInputNode",
