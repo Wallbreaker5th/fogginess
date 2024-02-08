@@ -10,6 +10,7 @@ import ConstantQuantityInputNode from "./graph/node/ConstantQuantityInputNode";
 import ExpressionNode from "./graph/node/ExpressionNode";
 import { quantityType } from "./graph/InterfaceTypes";
 import QuantityDisplayNode from "./graph/node/QuantityDisplayNode";
+import QuantityInputNode from "./graph/node/QuantityInputNode";
 
 export default defineComponent({
   components: {
@@ -22,6 +23,7 @@ export default defineComponent({
     baklava.editor.registerNodeType(ConstantQuantityInputNode);
     baklava.editor.registerNodeType(ExpressionNode);
     baklava.editor.registerNodeType(QuantityDisplayNode);
+    baklava.editor.registerNodeType(QuantityInputNode);
 
     const nodeInterfaceTypes = new BaklavaInterfaceTypes(baklava.editor, { viewPlugin: baklava });
     nodeInterfaceTypes.addTypes(quantityType);
