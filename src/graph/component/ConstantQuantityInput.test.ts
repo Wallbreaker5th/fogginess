@@ -1,3 +1,5 @@
+// Can't pass so far
+// Related issue: https://github.com/newcat/baklavajs/issues/379
 import { mount } from "@vue/test-utils";
 import ConstantQuantityInput from "./ConstantQuantityInput.vue";
 import { FUnit } from "../../math/FUnit";
