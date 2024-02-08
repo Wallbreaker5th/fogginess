@@ -36,3 +36,8 @@ h1 {
   padding: 0rem;
   text-align: center;
 }
+
+.el-input--small .el-input__wrapper {
+  padding-left: 7px !important;
+  padding-right: 7px !important;
+}
