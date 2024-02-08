@@ -59,11 +59,11 @@ export default {
 
 <template>
   <div class="constant-quantity-input">
-    <div v-if="label != ''" class="constant-quantity-input-label">{{ label }}</div>
+    <div v-if="label.length == 1" class="constant-quantity-input-label">{{ label }}</div>
     <div class="constant-quantity-input-boxes">
       <unit-input v-model="unit" />
-      <input type="number" v-model="number" class="constant-quantity-input-box" data-test="constant-quantity-input-box"
-        step="any" />
+      <el-input-number v-model="number" class="constant-quantity-input-box" data-test="constant-quantity-input-box"
+        step="any" size="small"/>
     </div>
   </div>
 </template>
@@ -82,5 +82,6 @@ export default {
 
 .constant-quantity-input-box {
   width: 100%;
+  margin-top: 5px;
 }
 </style>

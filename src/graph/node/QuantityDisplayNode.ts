@@ -6,12 +6,12 @@ import { quantityType } from "../InterfaceTypes";
 
 export default defineNode({
   type: "QuantityDisplayNode",
-  title: "Quantity Display",
+  title: "显示量",
   inputs: {
-    input: () => new QuantityInputInterface("Input", new FQuantity(1)),
+    input: () => new QuantityInputInterface("输入", new FQuantity(1)),
   },
   outputs: {
-    output: () => new QuantityDisplayInterface("Output", new FQuantity(1)),
+    output: () => new QuantityDisplayInterface("输出", new FQuantity(1)),
   },
   calculate({ input }) {
     return { output: input };

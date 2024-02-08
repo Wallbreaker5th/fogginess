@@ -21,9 +21,9 @@ export default defineComponent({
     const engine = new DependencyEngine(baklava.editor);
 
     baklava.editor.registerNodeType(ConstantQuantityInputNode);
-    baklava.editor.registerNodeType(ExpressionNode);
-    baklava.editor.registerNodeType(QuantityDisplayNode);
     baklava.editor.registerNodeType(QuantityInputNode);
+    baklava.editor.registerNodeType(QuantityDisplayNode);
+    baklava.editor.registerNodeType(ExpressionNode);
 
     const nodeInterfaceTypes = new BaklavaInterfaceTypes(baklava.editor, { viewPlugin: baklava });
     nodeInterfaceTypes.addTypes(quantityType, quantitySingleType);

@@ -5,14 +5,14 @@ import { quantitySingleType } from "../InterfaceTypes.ts";
 
 export default defineNode({
   type: "ConstantQuantityInputNode",
-  title: "Constant Quantity",
+  title: "常量",
   inputs: {
-    value: () => new NumberInterface("Value", 1).setPort(false),
-    unit: () => new UnitInterface("Unit", new FQuantity(1)).setPort(false),
+    value: () => new NumberInterface("值", 1).setPort(false),
+    unit: () => new UnitInterface("单位", new FQuantity(1)).setPort(false),
   },
   outputs: {
     output: () =>
-      new NodeInterface<FQuantity>("Output", new FQuantity(1)).use(
+      new NodeInterface<FQuantity>("输出", new FQuantity(1)).use(
         setType,
         quantitySingleType
       ),

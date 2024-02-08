@@ -50,10 +50,12 @@ export default {
         <span class="unit-input-name">
           {{ BASIC_UNITS[idx - 1] }}
         </span>
-        <input type="number" v-model="exponents[idx - 1]" class="unit-input-box" :data-test="'unit-input-box-' + idx" step="any" @input="exponents = exponents"/>
+        <el-input-number v-model="exponents[idx - 1]" class="unit-input-box" :data-test="'unit-input-box-' + idx"
+          @input="exponents = exponents" size="small" :controls="false" />
       </div>
       <div class="unit-input-box-number-container">
-        <input type="number" v-model="number" class="unit-input-box-number" :data-test="'unit-input-box-number'" step="any"/>
+        <el-input-number v-model="number" class="unit-input-box-number" :data-test="'unit-input-box-number'" size="small"
+          :controls="false" />
       </div>
     </div>
     <div class="unit-label" data-test="unit-label">
@@ -68,22 +70,28 @@ export default {
   font-size: 0.8em;
   width: 2em;
 }
+
 .unit-input-box {
-  width: 3em;
+  width: 3em !important;
 }
+
 .unit-input-box-container {
   display: inline-block;
-  margin-left: 0.5em;
-  margin-right: 0.5em;
+  margin-left: 0.25em;
+  margin-right: 0.25em;
+  width: 4.6em;
 }
+
 .unit-input-box-number {
-  width: 4em;
+  width: 4.6em !important;
 }
+
 .unit-input-box-number-container {
   display: inline-block;
   margin-left: 0.5em;
   margin-right: 0.5em;
 }
+
 .unit-label {
   display: none;
 }

@@ -13,10 +13,10 @@ import { string } from "mathjs";
 
 export default defineDynamicNode({
   type: "ExpressionNode",
-  title: "Expression Evaluation",
+  title: "表达式求值",
   inputs: {
     expression: () =>
-      new TextInputInterface<string>("Expression", "x").setPort(false),
+      new TextInputInterface<string>("表达式", "x").setPort(false),
   },
   outputs: {
     result: () =>
