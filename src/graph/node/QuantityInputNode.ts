@@ -1,7 +1,7 @@
 import { defineNode, NodeInterface, NumberInterface, setType } from "baklavajs";
 import { UnitInterface } from "../interface/UnitInterface.ts";
 import { FQuantity } from "../../math/FQuantity.ts";
-import { quantityType } from "../InterfaceTypes.ts";
+import { quantitySingleType } from "../InterfaceTypes.ts";
 import { FNumber } from "../../math/FNumber.ts";
 
 export default defineNode({
@@ -17,7 +17,7 @@ export default defineNode({
     output: () =>
       new NodeInterface<FQuantity>("Output", new FQuantity(1)).use(
         setType,
-        quantityType
+        quantitySingleType
       ),
   },
   calculate({ value, uncertainty, probabilyty, unit }) {

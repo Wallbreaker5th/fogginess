@@ -1,4 +1,14 @@
 .baklava-node-interface[data-interface-type="quantity"] .__port {
   background-color: green;
-  border-radius: 40%;
+  border-radius: 0%;
+  border: 2px white dashed;
+}
+.baklava-node-interface[data-interface-type="quantitySingle"] .__port {
+  background-color: green;
+  border-radius: 0%;
+}
+.baklava-node-interface[data-interface-type="quantityArray"] .__port {
+  background-color: green;
+  border-radius: 50%;
+  border: 2px white;
 }
