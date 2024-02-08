@@ -4,11 +4,12 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { BaklavaInterfaceTypes, EditorComponent, useBaklava } from "baklavajs";
+import { BaklavaInterfaceTypes, EditorComponent, useBaklava, DependencyEngine, applyResult } from "baklavajs";
 import "@baklavajs/themes/dist/syrup-dark.css";
 import ConstantQuantityInputNode from "./graph/node/ConstantQuantityInputNode";
 import ExpressionNode from "./graph/node/ExpressionNode";
 import { quantityType } from "./graph/InterfaceTypes";
+import QuantityDisplayNode from "./graph/node/QuantityDisplayNode";
 
 export default defineComponent({
   components: {
@@ -16,10 +17,22 @@ export default defineComponent({
   },
   setup() {
     const baklava = useBaklava();
+    const engine = new DependencyEngine(baklava.editor);
+
     baklava.editor.registerNodeType(ConstantQuantityInputNode);
     baklava.editor.registerNodeType(ExpressionNode);
+    baklava.editor.registerNodeType(QuantityDisplayNode);
+
     const nodeInterfaceTypes = new BaklavaInterfaceTypes(baklava.editor, { viewPlugin: baklava });
     nodeInterfaceTypes.addTypes(quantityType);
+    
+    const token = Symbol();
+    engine.events.afterRun.subscribe(token, (result) => {
+      engine.pause();
+      applyResult(result, baklava.editor);
+      engine.resume();
+    });
+    engine.start();
     return { baklava };
   },
 });
