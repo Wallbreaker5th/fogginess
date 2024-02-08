@@ -8,6 +8,8 @@ import { QuantityInputInterface } from "../interface/QuantityInputInterface";
 import { FQuantity } from "../../math/FQuantity";
 import { quantityType } from "../InterfaceTypes";
 import { math } from "../../math/math";
+import { ErrorDisplayInterface } from "../interface/ErrorDisplayInterface";
+import { string } from "mathjs";
 
 export default defineDynamicNode({
   type: "ExpressionNode",
@@ -22,6 +24,7 @@ export default defineDynamicNode({
         "Result",
         new FQuantity(1)
       ).use(setType, quantityType),
+    error: () => new ErrorDisplayInterface("Error", ""),
   },
   onUpdate({ expression }) {
     const symbols = new Set<string>();
@@ -49,7 +52,7 @@ export default defineDynamicNode({
     for (const symbol of symbols_sorted) {
       inputs_map.set(
         symbol,
-        () => new QuantityInputInterface(symbol, new FQuantity(0), symbol)
+        () => new QuantityInputInterface(symbol, new FQuantity(0))
       );
     }
     return {
@@ -59,7 +62,6 @@ export default defineDynamicNode({
   calculate(inputs) {
     // filter the inputs that are `expression`
     try {
-      console.log(inputs);
       const vars = new Map<string, FQuantity>(
         Object.entries(inputs)
           .filter(([key, value]) => key !== "expression")
@@ -70,13 +72,25 @@ export default defineDynamicNode({
           math.parse((inputs as { expression: string }).expression),
           vars
         ),
+        error: "",
       };
     } catch (e) {
-      // TODO: Change the node style
-      console.error(e);
-      return {
-        result: new FQuantity(0),
-      };
+      if(e instanceof string){
+        return {
+          result: [],
+          error: e,
+        };
+      } else if (e instanceof Error) {
+        return {
+          result: [],
+          error: e.message,
+        };
+      } else {
+        return {
+          result: [],
+          error: "Unknown error",
+        };
+      }
     }
   },
 });

@@ -2,18 +2,17 @@
 import UnitInput from './UnitInput.vue';
 
 import { FQuantity } from '../../math/FQuantity';
-
+import type { QuantityInputInterface } from '../interface/QuantityInputInterface';
+import { NodeInterface } from 'baklavajs';
+import { PropType } from 'vue';
 
 export default {
   props: {
-    modelValue: {
-      type: FQuantity,
-      required: true
-    },
+    modelValue: FQuantity,
+    intf: { type: NodeInterface as PropType<QuantityInputInterface>, required: true }
   },
   data() {
     return {
-      label: '',
       number_: 0,
       unit_: new FQuantity(1)
     }
@@ -40,6 +39,9 @@ export default {
         this.unit_ = value;
         this.$emit('update:modelValue', value.mul(new FQuantity(this.number)));
       }
+    },
+    label() {
+      return this.intf ? this.intf.name : '';
     }
   },
   // watch: {
