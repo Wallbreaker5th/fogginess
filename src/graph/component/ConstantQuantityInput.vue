@@ -63,7 +63,7 @@ export default {
     <div class="constant-quantity-input-boxes">
       <unit-input v-model="unit" />
       <el-input-number v-model="number" class="constant-quantity-input-box" data-test="constant-quantity-input-box"
-        step="any" size="small"/>
+        size="small" />
     </div>
   </div>
 </template>
