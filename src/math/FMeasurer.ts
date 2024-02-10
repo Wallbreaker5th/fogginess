@@ -38,7 +38,7 @@ export function calculateKp(
  */
 export function getUA(data: number[], p: number): number {
   const n = data.length;
-  const std = stdev(data.length, 1, data, 1);
+  const std = stdev(n, 1, data, 1);
   return (std / Math.sqrt(n)) * t.quantile(1 - (1 - p) / 2, n - 1);
 }
 
