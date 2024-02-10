@@ -10,7 +10,7 @@
 .baklava-node-interface[data-interface-type="quantityArray"] .__port {
   background-color: green;
   border-radius: 50%;
-  border: 2px white;
+  border: 2px white solid;
 }
 .baklava-node-interface[data-interface-type="measurer"] .__port {
   background-color: yellow;

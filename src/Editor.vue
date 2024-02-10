@@ -7,8 +7,9 @@ import { defineComponent } from "vue";
 import { BaklavaInterfaceTypes, EditorComponent, useBaklava, DependencyEngine, applyResult } from "baklavajs";
 import "@baklavajs/themes/dist/syrup-dark.css";
 import ConstantQuantityInputNode from "./graph/node/ConstantQuantityInputNode";
+import ConstantQuantityArrayInputNode from "./graph/node/ConstantQuantityArrayInputNode";
 import ExpressionNode from "./graph/node/ExpressionNode";
-import { quantityType, quantitySingleType, measurerType } from "./graph/InterfaceTypes";
+import { quantityType, quantitySingleType, quantityArrayType, measurerType } from "./graph/InterfaceTypes";
 import QuantityDisplayNode from "./graph/node/QuantityDisplayNode";
 import QuantityInputNode from "./graph/node/QuantityInputNode";
 import MeasurerInputNode from "./graph/node/MeasurerInputNode";
@@ -23,6 +24,7 @@ export default defineComponent({
     const engine = new DependencyEngine(baklava.editor);
 
     baklava.editor.registerNodeType(ConstantQuantityInputNode);
+    baklava.editor.registerNodeType(ConstantQuantityArrayInputNode);
     baklava.editor.registerNodeType(QuantityInputNode);
     baklava.editor.registerNodeType(QuantityDisplayNode);
     baklava.editor.registerNodeType(ExpressionNode);
@@ -30,8 +32,8 @@ export default defineComponent({
     baklava.editor.registerNodeType(MeasureNode);
 
     const nodeInterfaceTypes = new BaklavaInterfaceTypes(baklava.editor, { viewPlugin: baklava });
-    nodeInterfaceTypes.addTypes(quantityType, quantitySingleType, measurerType);
-    
+    nodeInterfaceTypes.addTypes(quantityType, quantitySingleType, quantityArrayType, measurerType);
+
     const token = Symbol();
     engine.events.afterRun.subscribe(token, (result) => {
       engine.pause();
