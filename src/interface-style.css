@@ -12,3 +12,7 @@
   border-radius: 50%;
   border: 2px white;
 }
+.baklava-node-interface[data-interface-type="measurer"] .__port {
+  background-color: yellow;
+  border-radius: 0%;
+}

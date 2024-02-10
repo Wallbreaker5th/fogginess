@@ -1,5 +1,6 @@
 import { NodeInterfaceType } from "baklavajs";
 import { FQuantity } from "../math/FQuantity";
+import { FMeasurer } from "../math/FMeasurer";
 
 export const quantityType = new NodeInterfaceType<FQuantity | Array<FQuantity>>(
   "quantity"
@@ -19,3 +20,7 @@ quantityType.addConversion(quantityArrayType, (value) =>
   value instanceof FQuantity ? [value] : value
 );
 quantityArrayType.addConversion(quantityType, (value) => value);
+
+export const measurerType = new NodeInterfaceType<FMeasurer>(
+  "measurer"
+);

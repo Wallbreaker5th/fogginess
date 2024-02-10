@@ -103,7 +103,7 @@ export class FNumber {
    * @param epsilon The maximum difference between the numbers.
    * @returns True if the numbers are equal, false otherwise.
    */
-  equals(b: FNumber, epsilon: number): boolean {
+  equals(b: FNumber, epsilon: number = 1e-3): boolean {
     return (
       Math.abs(this.v - b.v) <= epsilon &&
       Math.abs(this.u - b.u) <= epsilon &&

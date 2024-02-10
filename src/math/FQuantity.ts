@@ -176,7 +176,7 @@ export class FQuantity {
    * @param epsilon - The maximum difference between the numbers.
    * @returns True if the numbers are equal, false otherwise.
    */
-  equals(b: FQuantity, epsilon: number): boolean {
+  equals(b: FQuantity, epsilon: number = 1e-3): boolean {
     return this.unit.equals(b.unit) && this.number.equals(b.number, epsilon);
   }
 

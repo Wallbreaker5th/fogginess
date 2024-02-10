@@ -8,9 +8,10 @@ import { BaklavaInterfaceTypes, EditorComponent, useBaklava, DependencyEngine, a
 import "@baklavajs/themes/dist/syrup-dark.css";
 import ConstantQuantityInputNode from "./graph/node/ConstantQuantityInputNode";
 import ExpressionNode from "./graph/node/ExpressionNode";
-import { quantityType, quantitySingleType } from "./graph/InterfaceTypes";
+import { quantityType, quantitySingleType, measurerType } from "./graph/InterfaceTypes";
 import QuantityDisplayNode from "./graph/node/QuantityDisplayNode";
 import QuantityInputNode from "./graph/node/QuantityInputNode";
+import MeasurerInputNode from "./graph/node/MeasurerInputNode";
 
 export default defineComponent({
   components: {
@@ -24,9 +25,10 @@ export default defineComponent({
     baklava.editor.registerNodeType(QuantityInputNode);
     baklava.editor.registerNodeType(QuantityDisplayNode);
     baklava.editor.registerNodeType(ExpressionNode);
+    baklava.editor.registerNodeType(MeasurerInputNode);
 
     const nodeInterfaceTypes = new BaklavaInterfaceTypes(baklava.editor, { viewPlugin: baklava });
-    nodeInterfaceTypes.addTypes(quantityType, quantitySingleType);
+    nodeInterfaceTypes.addTypes(quantityType, quantitySingleType, measurerType);
     
     const token = Symbol();
     engine.events.afterRun.subscribe(token, (result) => {
