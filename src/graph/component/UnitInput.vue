@@ -51,11 +51,11 @@ export default {
           {{ BASIC_UNITS[idx - 1] }}
         </span>
         <el-input-number v-model="exponents[idx - 1]" class="unit-input-box" :data-test="'unit-input-box-' + idx"
-          @update:modelValue="exponents = exponents" size="small" :controls="false" />
+          @update:modelValue="exponents = exponents" size="small" :controls="false" title="" />
       </div>
       <div class="unit-input-box-number-container">
         <el-input-number v-model="number" class="unit-input-box-number" :data-test="'unit-input-box-number'" size="small"
-          :controls="false" />
+          :controls="false" title="" />
       </div>
     </div>
     <div class="unit-label" data-test="unit-label">

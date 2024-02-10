@@ -2,10 +2,10 @@ import {
   defineNode,
   setType,
   NodeInterface,
-  NumberInterface,
   SelectInterface,
 } from "baklavajs";
 import { UnitInterface } from "../interface/UnitInterface";
+import { NumberInterface } from "../interface/NumberInterface";
 import { DistributionType, FMeasurer } from "../../math/FMeasurer";
 import { measurerType } from "../InterfaceTypes";
 import { FQuantity } from "../../math/FQuantity";

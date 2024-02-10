@@ -2,10 +2,10 @@ import {
   defineNode,
   setType,
   NodeInterface,
-  NumberInterface,
   SelectInterface,
 } from "baklavajs";
 import { ConstantArrayInputInterface } from "../interface/ConstantArrayInputInterface";
+import { NumberInterface } from "../interface/NumberInterface";
 import { FQuantity } from "../../math/FQuantity";
 import { FMeasurer } from "../../math/FMeasurer";
 import CommonMeasurers from "../../math/CommonMeasurers";

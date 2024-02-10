@@ -2,6 +2,17 @@ import { math } from "./math.ts";
 import { FNumber } from "./FNumber.ts";
 import { FUnit } from "./FUnit.ts";
 
+function getExponent(n: number): number {
+  if (n === 0) {
+    return 0;
+  }
+  const abs_n = Math.abs(n);
+  if (abs_n > 1e-3 && abs_n < 1e4) {
+    return 0;
+  }
+  return Math.floor(Math.log10(abs_n));
+}
+
 /**
  * Represents a quantity combined by a number and a unit.
  */
@@ -185,12 +196,30 @@ export class FQuantity {
    */
   toString(): string {
     if (this.number.isConstant()) {
-      return `${this.number.v.toPrecision(4)} ${this.unit.toString()}`;
+      // return `${this.number.v.toPrecision(4)} ${this.unit.toString()}`;
+      const exp = getExponent(this.number.v);
+      if (exp === 0) {
+        return `${this.number.v.toPrecision(4)} ${this.unit.toString()}`;
+      } else {
+        return `${(this.number.v / Math.pow(10, exp)).toPrecision(
+          4
+        )}×10^${exp} ${this.unit.toString()}`;
+      }
     } else {
-      return (
-        `${this.number.v.toPrecision(4)}±${this.number.u.toPrecision(4)} ` +
-        `${this.unit.toString()} (P=${this.number.p.toPrecision(4)})`
-      );
+      const exp = getExponent(this.number.v);
+      if (exp === 0) {
+        return `${this.number.v.toPrecision(4)}±${this.number.u.toPrecision(
+          4
+        )} ${this.unit.toString()} (P=${this.number.p.toPrecision(3)})`;
+      } else {
+        return `(${(this.number.v / Math.pow(10, exp)).toPrecision(4)}±${(
+          this.number.u / Math.pow(10, exp)
+        ).toPrecision(
+          4
+        )})×10^${exp} ${this.unit.toString()} (P=${this.number.p.toPrecision(
+          3
+        )})`;
+      }
     }
   }
 

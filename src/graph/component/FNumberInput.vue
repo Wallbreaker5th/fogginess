@@ -41,11 +41,11 @@ export default {
 
 <template>
   <div class="number-input">
-    <el-input-number v-model="number" :controls="false" size="small" class="number-input-number" />
+    <el-input-number v-model="number" :controls="false" size="small" class="number-input-number" title="" />
     <div class="uncertainty-label">±</div>
-    <el-input-number v-model="uncertainty" :controls="false" size="small" class="number-input-uncertainty" />
+    <el-input-number v-model="uncertainty" :controls="false" size="small" class="number-input-uncertainty" title="" />
     <div class="probability-label">P=</div>
-    <el-input-number v-model="probability" :controls="false" size="small" class="number-input-probability" />
+    <el-input-number v-model="probability" :controls="false" size="small" class="number-input-probability" title="" />
   </div>
 </template>
 

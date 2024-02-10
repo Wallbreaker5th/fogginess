@@ -45,7 +45,7 @@ export default {
   <div class="constant-array-input-table">
     <div v-for="index in modelValue.length" :key="index" class="constant-array-input-cell">
       <el-input-number :modelValue="modelValue[index - 1]" @update:modelValue="updateItem(index - 1, $event)" size="small"
-        class="constant-array-input-box" :controls="false" />
+        class="constant-array-input-box" :controls="false" title="" />
       <el-button type="danger" :icon="Delete" size="small" class="constant-array-input-delete"
         @click="removeItem(index - 1)" circle />
     </div>
