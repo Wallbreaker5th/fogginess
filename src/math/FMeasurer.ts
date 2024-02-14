@@ -54,6 +54,7 @@ export class FMeasurer {
   EE: number = 0; // 估计误差
   distributionType: DistributionType = DistributionType.Normal;
   estimateDeltaB: boolean = true; // 若 MPE 与 EE 之中较大者超过较小者的 3 倍，取较大者
+  __FType = "FMeasurer";
 
   constructor(
     unit: FQuantity,
@@ -67,6 +68,16 @@ export class FMeasurer {
     this.EE = EE;
     this.distributionType = distributionType;
     this.estimateDeltaB = estimateDeltaB;
+  }
+
+  static fromJSON(json: any): FMeasurer {
+    return new FMeasurer(
+      FQuantity.fromJSON(json.unit),
+      json.MPE,
+      json.EE,
+      json.distributionType,
+      json.estimateDeltaB
+    );
   }
 
   /**

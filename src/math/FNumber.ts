@@ -8,11 +8,16 @@ export class FNumber {
   v: number; // value
   u: number; // uncertainty
   p: number; // confidence probability
+  __FType = "FNumber";
 
   constructor(v: number, u: number, p: number) {
     this.v = v;
     this.u = u;
     this.p = p;
+  }
+
+  static fromJSON(json: any): FNumber {
+    return new FNumber(json.v, json.u, json.p);
   }
 
   /**

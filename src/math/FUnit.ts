@@ -8,6 +8,7 @@ export class FUnit {
    * The exponents for the basic units.
    */
   exponents: Array<number>;
+  __FType = "FUnit";
 
   /**
    * Creates a new FUnit instance.
@@ -24,6 +25,10 @@ export class FUnit {
         this.exponents.push(exponents.get(s) || 0);
       }
     }
+  }
+
+  static fromJSON(json: any): FUnit {
+    return new FUnit(json.exponents);
   }
 
   /**

@@ -19,6 +19,7 @@ function getExponent(n: number): number {
 export class FQuantity {
   number: FNumber = FNumber.constant(0);
   unit: FUnit = FUnit.one();
+  __FType = "FQuantity";
 
   /**
    * Creates a new FQuantity instance.
@@ -32,6 +33,10 @@ export class FQuantity {
       this.number = FNumber.constant(number);
     }
     this.unit = unit;
+  }
+
+  static fromJSON(json: any): FQuantity {
+    return new FQuantity(FNumber.fromJSON(json.number), FUnit.fromJSON(json.unit));
   }
 
   /**
