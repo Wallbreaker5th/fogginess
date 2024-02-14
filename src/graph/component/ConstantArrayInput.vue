@@ -35,6 +35,18 @@ export default {
       const newArray = this.modelValue.slice(0);
       newArray.push(0);
       this.array = newArray;
+    },
+    moveFocus(index: number) {
+      if (index === this.modelValue.length + 1) {
+        this.addItem();
+      }
+      this.$nextTick(() => {
+        const input = (this.$refs['input' + index] as Array<any>)[0];
+        if (input) {
+          console.log(input as HTMLInputElement);
+          (input as HTMLInputElement).focus();
+        }
+      });
     }
   }
 }
@@ -45,7 +57,8 @@ export default {
   <div class="constant-array-input-table">
     <div v-for="index in modelValue.length" :key="index" class="constant-array-input-cell">
       <el-input-number :modelValue="modelValue[index - 1]" @update:modelValue="updateItem(index - 1, $event)" size="small"
-        class="constant-array-input-box" :controls="false" title="" />
+        class="constant-array-input-box" :controls="false" title="" :ref="'input' + index" @keydown.enter="moveFocus(index+1)"
+        @keydown.tab="moveFocus(index+1)" />
       <el-button type="danger" :icon="Delete" size="small" class="constant-array-input-delete"
         @click="removeItem(index - 1)" circle />
     </div>

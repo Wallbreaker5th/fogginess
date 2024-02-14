@@ -10,7 +10,7 @@ import { measurerType, quantityArrayType } from "../InterfaceTypes";
 
 export default defineNode({
   type: "ConstantQuantityArrayInputNode",
-  title: "常量列表",
+  title: "✏常量列表",
   inputs: {
     values: () => new ConstantArrayInputInterface("值", [0, 0, 0]),
     unit: () => new UnitInterface("单位", new FQuantity(1)),

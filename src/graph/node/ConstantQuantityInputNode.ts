@@ -6,7 +6,7 @@ import { quantitySingleType } from "../InterfaceTypes.ts";
 
 export default defineNode({
   type: "ConstantQuantityInputNode",
-  title: "常量",
+  title: "✏常量",
   inputs: {
     value: () => new NumberInterface("值", 1).setPort(false),
     unit: () => new UnitInterface("单位", new FQuantity(1)).setPort(false),

@@ -13,7 +13,7 @@ import { measurerType, quantitySingleType } from "../InterfaceTypes";
 
 export default defineNode({
   type: "MeasureNode",
-  title: "测量",
+  title: "📏测量",
   inputs: {
     values: () => new ConstantArrayInputInterface("度数", [0, 0, 0]),
     measurer: () => new SelectInterface<FMeasurer>("仪器", CommonMeasurers[0].measurer, CommonMeasurers.map((measurer) => ({

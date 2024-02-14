@@ -6,7 +6,7 @@ import { quantityArrayType, quantitySingleType } from "../InterfaceTypes";
 
 export default defineNode({
   type: "LinearRegressionNode",
-  title: "线性回归",
+  title: "🧮线性回归",
   inputs: {
     x: () => new NodeInterface("x", new Array<FQuantity>()).use(setType, quantityArrayType).setPort(true),
     y: () => new NodeInterface("y", new Array<FQuantity>()).use(setType, quantityArrayType).setPort(true),

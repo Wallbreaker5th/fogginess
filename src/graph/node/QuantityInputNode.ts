@@ -7,7 +7,7 @@ import { FNumberInterface } from "../interface/FNumberInterface.ts";
 
 export default defineNode({
   type: "QuantityInputNode",
-  title: "量",
+  title: "✏量",
   inputs: {
     value: () => new FNumberInterface("值", FNumber.constant(0)).setPort(false),
     unit: () => new UnitInterface("单位", new FQuantity(1)).setPort(false),

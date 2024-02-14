@@ -12,7 +12,7 @@ import { FQuantity } from "../../math/FQuantity";
 
 export default defineNode({
   type: "MeasurerInputNode",
-  title: "测量仪器",
+  title: "📏测量仪器",
   inputs: {
     unit: () => new UnitInterface("单位", new FQuantity(1)).setPort(true),
     MPE: () => new NumberInterface("最大允差", 0).setPort(false),

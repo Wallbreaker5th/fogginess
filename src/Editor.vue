@@ -27,11 +27,14 @@ export default defineComponent({
     baklava.editor.registerNodeType(ConstantQuantityInputNode);
     baklava.editor.registerNodeType(ConstantQuantityArrayInputNode);
     baklava.editor.registerNodeType(QuantityInputNode);
+
     baklava.editor.registerNodeType(QuantityDisplayNode);
+
     baklava.editor.registerNodeType(ExpressionNode);
+    baklava.editor.registerNodeType(LinearRegressionNode);
+
     baklava.editor.registerNodeType(MeasurerInputNode);
     baklava.editor.registerNodeType(MeasureNode);
-    baklava.editor.registerNodeType(LinearRegressionNode);
 
     const nodeInterfaceTypes = new BaklavaInterfaceTypes(baklava.editor, { viewPlugin: baklava });
     nodeInterfaceTypes.addTypes(quantityType, quantitySingleType, quantityArrayType, measurerType);
