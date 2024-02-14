@@ -238,4 +238,20 @@ export class FQuantity {
       ])
     );
   }
+
+  /**
+   * Divides this quantity by another quantity.
+   * This function is mainly for calculations about units.
+   * @param b - The quantity to divide by.
+   * @returns The result of the division.
+   */
+  div(b: FQuantity): FQuantity {
+    return FQuantity.eval(
+      math.parse("a/b"),
+      new Map([
+        ["a", this],
+        ["b", b],
+      ])
+    );
+  }
 }
