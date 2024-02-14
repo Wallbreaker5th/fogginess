@@ -18,6 +18,9 @@ test("Display", async () => {
     props: {
       modelValue: new FQuantity(1, u),
     },
+    global: {
+      plugins: [ElementPlus],
+    },
   });
   const label = wrapper.get('[data-test="unit-label"]');
   expect(label.text()).toBe("1.000 m s^-2");
