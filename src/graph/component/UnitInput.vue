@@ -1,9 +1,3 @@
-d<!-- 
-  This component is a custom input field for a unit.
-  It contains seven input fields for the seven base units of the International System of Units (SI).
-  It has also a text label to display the unit.
-  So far its value can be 1 only.
- -->
 <script lang="ts">
 import { FUnit, BASIC_UNITS } from '../../math/FUnit';
 import { FQuantity } from '../../math/FQuantity';
