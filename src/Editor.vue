@@ -6,14 +6,15 @@
 import { defineComponent } from "vue";
 import { BaklavaInterfaceTypes, EditorComponent, useBaklava, DependencyEngine, applyResult } from "baklavajs";
 import "@baklavajs/themes/dist/syrup-dark.css";
+import { quantityType, quantitySingleType, quantityArrayType, measurerType } from "./graph/InterfaceTypes";
 import ConstantQuantityInputNode from "./graph/node/ConstantQuantityInputNode";
 import ConstantQuantityArrayInputNode from "./graph/node/ConstantQuantityArrayInputNode";
 import ExpressionNode from "./graph/node/ExpressionNode";
-import { quantityType, quantitySingleType, quantityArrayType, measurerType } from "./graph/InterfaceTypes";
 import QuantityDisplayNode from "./graph/node/QuantityDisplayNode";
 import QuantityInputNode from "./graph/node/QuantityInputNode";
 import MeasurerInputNode from "./graph/node/MeasurerInputNode";
 import MeasureNode from "./graph/node/MeasureNode";
+import LinearRegressionNode from "./graph/node/LinearRegressionNode";
 
 export default defineComponent({
   components: {
@@ -30,6 +31,7 @@ export default defineComponent({
     baklava.editor.registerNodeType(ExpressionNode);
     baklava.editor.registerNodeType(MeasurerInputNode);
     baklava.editor.registerNodeType(MeasureNode);
+    baklava.editor.registerNodeType(LinearRegressionNode);
 
     const nodeInterfaceTypes = new BaklavaInterfaceTypes(baklava.editor, { viewPlugin: baklava });
     nodeInterfaceTypes.addTypes(quantityType, quantitySingleType, quantityArrayType, measurerType);
