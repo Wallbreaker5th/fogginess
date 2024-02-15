@@ -1,18 +1,12 @@
-# Vue 3 + TypeScript + Vite
+# Fogginess - 大物实验不确定度计算器
+这是一个以节点式编辑为基础的，用于计算不确定度的工具。其中各项计算方式主要参考 USTC 物理实验教学中心的要求。
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## 使用方法
+如果你是用户，直接访问 [Fogginess](https://fogginess.wallbreaker5th.top) 即可。
 
-## Recommended IDE Setup
+## Q&A
+### 为什么叫 Fogginess？
+`Fog` 是大雾，而要计算到底雾到底有多大，算的就是 `Fogginess`。
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Type Support For `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
-
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+### 不是已经有「蜗壳大雾实验工具」了吗？
+Fogginess 与 [蜗壳大雾实验工具](https://dawu.feixu.site/) 的理念并不相同。后者只需要上传带有数据的 Excel 表格，就能够自动计算出结果并生成文档；但其只覆盖了固定的计算流程，面对新的实验需要手动编写代码。而 Fogginess 的重点放在用户可以自定义计算的流程，从而不编写代码就能分析新实验的数据；但其没有自动生成文档和作图等方面的功能。

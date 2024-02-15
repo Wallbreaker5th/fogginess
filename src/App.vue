@@ -46,7 +46,7 @@ export default {
     </div>
   </div>
   <div class="footer">
-    <div class="heading">Foginess - 大物实验不确定度计算器</div>
+    <div class="heading">Fogginess - 大物实验不确定度计算器</div>
     <div>
       <el-text>By <el-link href="https://www.wallbreaker5th.top">破壁人五号</el-link></el-text>
     </div>

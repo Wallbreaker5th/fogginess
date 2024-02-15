@@ -56,7 +56,7 @@ function download(text: string) {
   const url = window.URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
-  a.download = "foginess-" + new Date().toISOString().replace(/:/g, "-") + ".json";
+  a.download = "fogginess-" + new Date().toISOString().replace(/:/g, "-") + ".json";
   a.click();
   window.URL.revokeObjectURL(url);
 }
@@ -85,7 +85,7 @@ export default defineComponent({
       );
     },
     saveInBrowser() {
-      localStorage.setItem("foginess", JSON.stringify(this.baklava.editor.save()));
+      localStorage.setItem("fogginess", JSON.stringify(this.baklava.editor.save()));
     }
   },
   setup() {
@@ -113,8 +113,8 @@ export default defineComponent({
     const nodeInterfaceTypes = new BaklavaInterfaceTypes(baklava.editor, { viewPlugin: baklava });
     nodeInterfaceTypes.addTypes(quantityType, quantitySingleType, quantityArrayType, measurerType);
 
-    if (localStorage.getItem("foginess")) {
-      let json = JSON.parse(localStorage.getItem("foginess")!);
+    if (localStorage.getItem("fogginess")) {
+      let json = JSON.parse(localStorage.getItem("fogginess")!);
       // Recursively check json, and replace any object with a __FType property with the correct type
       json = foggify(json);
       baklava.editor.load(json);
@@ -130,7 +130,7 @@ export default defineComponent({
 
     // Add auto-save every 2 seconds
     setInterval(() => {
-      localStorage.setItem("foginess", JSON.stringify(baklava.editor.save()));
+      localStorage.setItem("fogginess", JSON.stringify(baklava.editor.save()));
     }, 2000);
 
     return { baklava };
