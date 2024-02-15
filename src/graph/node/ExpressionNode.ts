@@ -75,7 +75,7 @@ export default defineDynamicNode({
         error: "",
       };
     } catch (e) {
-      if(e instanceof string){
+      if (typeof e === "string") {
         return {
           result: [],
           error: e,
