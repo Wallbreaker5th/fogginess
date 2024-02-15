@@ -1,14 +1,36 @@
 <script setup lang="ts">
 import Editor from './Editor.vue'
+import { Download, Upload } from '@element-plus/icons-vue';
 </script>
-
+<script lang="ts">
+export default {
+  components: {
+    Editor
+  },
+  methods: {
+    load() {
+      const file = (this.$refs.jsonFile as HTMLInputElement).files?.[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          const json = JSON.parse(reader.result as string);
+          (this.$refs.editor as any).load(json);
+        };
+        reader.readAsText(file);
+      }
+    }
+  }
+}
+</script>
 <template>
   <div class="main">
     <div style="flex-grow: 1">
-      <Editor />
+      <Editor ref="editor" />
     </div>
-    <div style="width: 50px; margin: 10px; background-color: white;">
-      啊啊啊啊啊啊
+    <div class="toolbar">
+      <el-button type="primary" @click="($refs.editor as any).save()" :icon="Download" class="tool-button" circle></el-button>
+      <input type="file" ref="jsonFile" accept=".json" style="display:none" @change="load" />
+      <el-button type="primary" @click="($refs.jsonFile as any).click()" :icon="Upload" class="tool-button" circle></el-button>
     </div>
   </div>
   <div class="footer">
@@ -40,5 +62,19 @@ import Editor from './Editor.vue'
   height: 90vh;
   display: flex;
   flex-direction: row;
+}
+
+.toolbar {
+  width: 50px;
+  margin: 50px 5px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: left;
+}
+
+.tool-button {
+  margin: 5px 0;
 }
 </style>

@@ -49,9 +49,28 @@ function foggify(json: any) {
   }
 }
 
+function download(text: string) {
+  const blob = new Blob([text], { type: "text/plain" });
+  const url = window.URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "foginess-" + new Date().toISOString().replace(/:/g, "-") + ".json";
+  a.click();
+  window.URL.revokeObjectURL(url);
+}
+
 export default defineComponent({
   components: {
     "baklava-editor": EditorComponent,
+  },
+  methods: {
+    save() {
+      download(JSON.stringify(this.baklava.editor.save()));
+    },
+    load(obj: any) {
+      this.baklava.editor.load(foggify(obj));
+      console.log("Loaded");
+    }
   },
   setup() {
     const baklava = useBaklava();
@@ -84,9 +103,13 @@ export default defineComponent({
       engine.pause();
       applyResult(result, baklava.editor);
       engine.resume();
-      localStorage.setItem("foginess", JSON.stringify(baklava.editor.save()));
     });
     engine.start();
+
+    // Add auto-save every 2 seconds
+    setInterval(() => {
+      localStorage.setItem("foginess", JSON.stringify(baklava.editor.save()));
+    }, 2000);
 
     return { baklava };
   },
