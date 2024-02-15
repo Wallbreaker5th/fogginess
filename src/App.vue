@@ -24,18 +24,30 @@ export default {
 </script>
 <template>
   <div class="main">
+    <div class="toolbar">
+      <el-button type="primary" @click="($refs.editor as any).save()" :icon="Download" class="tool-button"
+        circle></el-button>
+      <input type="file" ref="jsonFile" accept=".json" style="display:none" @change="load" />
+      <el-button type="primary" @click="($refs.jsonFile as any).click()" :icon="Upload" class="tool-button"
+        circle></el-button>
+    </div>
     <div style="flex-grow: 1">
       <Editor ref="editor" />
-    </div>
-    <div class="toolbar">
-      <el-button type="primary" @click="($refs.editor as any).save()" :icon="Download" class="tool-button" circle></el-button>
-      <input type="file" ref="jsonFile" accept=".json" style="display:none" @change="load" />
-      <el-button type="primary" @click="($refs.jsonFile as any).click()" :icon="Upload" class="tool-button" circle></el-button>
     </div>
   </div>
   <div class="footer">
     <div class="heading">Foginess - 大物实验不确定度计算器</div>
-    <div>By <a href="https://www.wallbreaker5th.top">破壁人五号</a></div>
+    <div>
+      <el-text>By <el-link href="https://www.wallbreaker5th.top">破壁人五号</el-link></el-text>
+    </div>
+    <div style="margin-left: 100px">
+      <el-text>
+        See also:
+        <el-link href="https://dawu.feixu.site/">蜗壳大雾实验工具</el-link>
+        By
+        <el-link href="https://feixu.site">飞旭</el-link>
+      </el-text>
+    </div>
   </div>
 </template>
 
@@ -65,7 +77,6 @@ export default {
 }
 
 .toolbar {
-  width: 50px;
   margin: 50px 5px;
   height: 100%;
   display: flex;
