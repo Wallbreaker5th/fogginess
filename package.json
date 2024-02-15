@@ -11,9 +11,10 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
-    "@stdlib/stdlib": "^0.2.0",
+    "@stdlib/stats": "^0.2.1",
     "baklavajs": "^2.4.0",
     "element-plus": "^2.5.5",
+    "mathjs": "^12.3.2",
     "vue": "^3.3.11"
   },
   "devDependencies": {
