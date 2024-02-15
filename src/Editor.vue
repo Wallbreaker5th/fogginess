@@ -76,17 +76,21 @@ export default defineComponent({
     const baklava = useBaklava();
     const engine = new DependencyEngine(baklava.editor);
 
-    baklava.editor.registerNodeType(ConstantQuantityInputNode);
-    baklava.editor.registerNodeType(ConstantQuantityArrayInputNode);
-    baklava.editor.registerNodeType(QuantityInputNode);
+    const s_input="\u200b\u200b\u200b\u200b输入";
+    const s_output="\u200b\u200b\u200b显示";
+    const s_calculate="\u200b\u200b计算";
+    const s_measure="\u200b测量";
+    baklava.editor.registerNodeType(ConstantQuantityInputNode, {category: s_input});
+    baklava.editor.registerNodeType(ConstantQuantityArrayInputNode, {category: s_input});
+    baklava.editor.registerNodeType(QuantityInputNode, {category: s_input});
 
-    baklava.editor.registerNodeType(QuantityDisplayNode);
+    baklava.editor.registerNodeType(QuantityDisplayNode, {category: s_output});
 
-    baklava.editor.registerNodeType(ExpressionNode);
-    baklava.editor.registerNodeType(LinearRegressionNode);
+    baklava.editor.registerNodeType(ExpressionNode, {category: s_calculate});
+    baklava.editor.registerNodeType(LinearRegressionNode, {category: s_calculate});
 
-    baklava.editor.registerNodeType(MeasurerInputNode);
-    baklava.editor.registerNodeType(MeasureNode);
+    baklava.editor.registerNodeType(MeasurerInputNode, {category: s_measure});
+    baklava.editor.registerNodeType(MeasureNode, {category: s_measure});
 
     const nodeInterfaceTypes = new BaklavaInterfaceTypes(baklava.editor, { viewPlugin: baklava });
     nodeInterfaceTypes.addTypes(quantityType, quantitySingleType, quantityArrayType, measurerType);
@@ -115,3 +119,13 @@ export default defineComponent({
   },
 });
 </script>
+
+<style>
+.baklava-node-palette h1 {
+  font-size: 1em;
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  text-align: left;
+  font-weight: 400;
+}
+</style>
