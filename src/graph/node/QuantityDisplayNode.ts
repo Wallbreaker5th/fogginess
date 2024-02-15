@@ -1,4 +1,4 @@
-import { defineNode, setType } from "baklavajs";
+import { defineNode } from "baklavajs";
 import { QuantityInputInterface } from "../interface/QuantityInputInterface";
 import { QuantityDisplayInterface } from "../interface/QuantityDisplayInterface";
 import { FQuantity } from "../../math/FQuantity";

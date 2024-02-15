@@ -1,6 +1,4 @@
 import { expect, test } from "vitest";
-import { FUnit } from "./FUnit";
-import { FQuantity } from "./FQuantity";
 import { parseUnit } from "./ParseUnit";
 
 test("parseUnit", () => {

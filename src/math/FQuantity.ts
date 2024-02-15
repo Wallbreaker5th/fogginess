@@ -154,7 +154,7 @@ export class FQuantity {
     vars: Map<string, FQuantity | Array<FQuantity>>
   ): FQuantity | Array<FQuantity> {
     let array_length: number = -1;
-    for (const [key, value] of vars) {
+    for (const [, value] of vars) {
       if (value instanceof Array) {
         if (array_length === -1) {
           array_length = value.length;

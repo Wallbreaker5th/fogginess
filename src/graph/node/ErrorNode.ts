@@ -3,7 +3,6 @@ import { FQuantity } from "../../math/FQuantity";
 import { quantitySingleType } from "../InterfaceTypes";
 import { ErrorDisplayInterface } from "../interface/ErrorDisplayInterface";
 import { math } from "../../math/math";
-import { expect } from "vitest";
 
 export default defineNode({
   type: "ErrorNode",
