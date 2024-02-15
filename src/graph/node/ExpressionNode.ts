@@ -26,7 +26,7 @@ export default defineDynamicNode({
     error: () => new ErrorDisplayInterface("Error", ""),
   },
   onUpdate({ expression }) {
-    const symbols = new Set<String>();
+    const symbols = new Set<string>();
     // Find all alphabets of length 1
     const matched = new Array<boolean>();
     for (let i = 0; i < expression.length; i++) {
@@ -47,7 +47,7 @@ export default defineDynamicNode({
     }
 
     const symbols_sorted = Array.from(symbols).sort();
-    const inputs_map = new Map<String, () => QuantityInputInterface>();
+    const inputs_map = new Map<string, () => QuantityInputInterface>();
     for (const symbol of symbols_sorted) {
       inputs_map.set(
         symbol,
