@@ -6,7 +6,7 @@ import {
 import { ConstantArrayInputInterface } from "../interface/ConstantArrayInputInterface";
 import { UnitInterface } from "../interface/UnitInterface";
 import { FQuantity } from "../../math/FQuantity";
-import { measurerType, quantityArrayType } from "../InterfaceTypes";
+import { quantityArrayType } from "../InterfaceTypes";
 
 export default defineNode({
   type: "ConstantQuantityArrayInputNode",

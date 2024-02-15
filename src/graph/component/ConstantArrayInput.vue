@@ -49,8 +49,8 @@ export default {
       this.$nextTick(() => {
         const input = (this.$refs['input' + index] as Array<any>)[0];
         if (input) {
-          console.log(input as HTMLInputElement);
-          (input as HTMLInputElement).focus();
+          const inputElement = input.$el.querySelector('input');
+          inputElement.select();
         }
       });
     },
@@ -82,7 +82,7 @@ export default {
         @click="removeItem(index - 1)" circle />
     </div>
     <div class="constant-array-input-tools">
-      <el-button type="primary" :icon="Plus" size="small" class="constant-array-input-add" @click="addItem" />
+      <el-button type="primary" :icon="Plus" size="small" class="constant-array-input-add" @click="moveFocus(modelValue.length + 1)" />
       <el-popover :visible="visible" placement="top" :width="200">
         <div class="constant-array-input-pop">
           <el-input type="textarea" v-model="textInput" placeholder="从 Excel 粘贴，或直接输入一组用空格分隔的数值" size="small" />

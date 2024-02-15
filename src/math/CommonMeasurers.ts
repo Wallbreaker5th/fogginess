@@ -18,7 +18,7 @@ export default [
     name: "钢卷尺 2m/1mm",
     unitName: "m",
     measurer: new FMeasurer(
-      new FQuantity(2, new FUnit(new Map([["m", 1]]))),
+      new FQuantity(1, new FUnit(new Map([["m", 1]]))),
       1.2,
       0,
       DistributionType.Normal,
@@ -29,7 +29,7 @@ export default [
     name: "游标卡尺 125mm/0.02mm",
     unitName: "mm",
     measurer: new FMeasurer(
-      new FQuantity(125, new FUnit(new Map([["mm", 1]]))),
+      new FQuantity(1e-3, new FUnit(new Map([["m", 1]]))),
       0.02,
       0,
       DistributionType.Uniform,
@@ -40,7 +40,7 @@ export default [
     name: "游标卡尺 300mm/0.02mm",
     unitName: "mm",
     measurer: new FMeasurer(
-      new FQuantity(300, new FUnit(new Map([["mm", 1]]))),
+      new FQuantity(1e-3, new FUnit(new Map([["m", 1]]))),
       0.05,
       0,
       DistributionType.Uniform,
@@ -51,7 +51,7 @@ export default [
     name: "螺旋测微器 25mm/0.01mm",
     unitName: "mm",
     measurer: new FMeasurer(
-      new FQuantity(25, new FUnit(new Map([["mm", 1]]))),
+      new FQuantity(1e-3, new FUnit(new Map([["m", 1]]))),
       0.004,
       0,
       DistributionType.Normal,
