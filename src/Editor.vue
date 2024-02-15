@@ -19,6 +19,7 @@ import { FNumber } from "./math/FNumber";
 import { FUnit } from "./math/FUnit";
 import { FQuantity } from "./math/FQuantity";
 import { FMeasurer } from "./math/FMeasurer";
+import ArithmeticSequenceNode from "./graph/node/ArithmeticSequenceNode";
 
 function foggify(json: any) {
   if (json.__FType) {
@@ -83,6 +84,7 @@ export default defineComponent({
     baklava.editor.registerNodeType(ConstantQuantityInputNode, {category: s_input});
     baklava.editor.registerNodeType(ConstantQuantityArrayInputNode, {category: s_input});
     baklava.editor.registerNodeType(QuantityInputNode, {category: s_input});
+    baklava.editor.registerNodeType(ArithmeticSequenceNode, {category: s_input});
 
     baklava.editor.registerNodeType(QuantityDisplayNode, {category: s_output});
 
