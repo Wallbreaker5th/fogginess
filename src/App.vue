@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Editor from './Editor.vue'
-import { Download, Upload } from '@element-plus/icons-vue';
+import { Download, Upload, Delete, Document } from '@element-plus/icons-vue';
 </script>
 <script lang="ts">
 export default {
@@ -25,11 +25,21 @@ export default {
 <template>
   <div class="main">
     <div class="toolbar">
-      <el-button type="primary" @click="($refs.editor as any).save()" :icon="Download" class="tool-button"
+      <el-button type="primary" @click="($refs.editor as any).save()" :icon="Download" class="tool-button" title="下载文件"
         circle></el-button>
+
       <input type="file" ref="jsonFile" accept=".json" style="display:none" @change="load" />
-      <el-button type="primary" @click="($refs.jsonFile as any).click()" :icon="Upload" class="tool-button"
+      <el-button type="primary" @click="($refs.jsonFile as any).click()" :icon="Upload" class="tool-button" title="加载文件"
         circle></el-button>
+
+      <el-button type="primary" @click="($refs.editor as any).saveInBrowser()" :icon="Document" class="tool-button"
+        title="保存草稿" circle></el-button>
+
+      <el-popconfirm width="220" title="确定要清空吗？（无法撤销）" @confirm="($refs.editor as any).clear()">
+        <template #reference>
+          <el-button type="danger" :icon="Delete" class="tool-button" title="清空" circle></el-button>
+        </template>
+      </el-popconfirm>
     </div>
     <div style="flex-grow: 1">
       <Editor ref="editor" />
@@ -83,6 +93,10 @@ export default {
   flex-direction: column;
   justify-content: flex-start;
   align-items: left;
+}
+
+.toolbar .el-button+.el-button {
+  margin-left: 0;
 }
 
 .tool-button {

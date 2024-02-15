@@ -71,28 +71,42 @@ export default defineComponent({
     load(obj: any) {
       this.baklava.editor.load(foggify(obj));
       console.log("Loaded");
+    },
+    clear() {
+      this.baklava.editor.load(
+        {
+          graph: {
+            id: "60149346-ff55-468d-92df-c49edda4839d",
+            nodes: [], connections: [], inputs: [], outputs: [], panning: { x: 0, y: 0 }, scaling: 1
+          },
+          graphTemplates: []
+        }
+      );
+    },
+    saveInBrowser() {
+      localStorage.setItem("foginess", JSON.stringify(this.baklava.editor.save()));
     }
   },
   setup() {
     const baklava = useBaklava();
     const engine = new DependencyEngine(baklava.editor);
 
-    const s_input="\u200b\u200b\u200b\u200b输入";
-    const s_output="\u200b\u200b\u200b显示";
-    const s_calculate="\u200b\u200b计算";
-    const s_measure="\u200b测量";
-    baklava.editor.registerNodeType(ConstantQuantityInputNode, {category: s_input});
-    baklava.editor.registerNodeType(ConstantQuantityArrayInputNode, {category: s_input});
-    baklava.editor.registerNodeType(QuantityInputNode, {category: s_input});
-    baklava.editor.registerNodeType(ArithmeticSequenceNode, {category: s_input});
+    const s_input = "\u200b\u200b\u200b\u200b输入";
+    const s_output = "\u200b\u200b\u200b显示";
+    const s_calculate = "\u200b\u200b计算";
+    const s_measure = "\u200b测量";
+    baklava.editor.registerNodeType(ConstantQuantityInputNode, { category: s_input });
+    baklava.editor.registerNodeType(ConstantQuantityArrayInputNode, { category: s_input });
+    baklava.editor.registerNodeType(QuantityInputNode, { category: s_input });
+    baklava.editor.registerNodeType(ArithmeticSequenceNode, { category: s_input });
 
-    baklava.editor.registerNodeType(QuantityDisplayNode, {category: s_output});
+    baklava.editor.registerNodeType(QuantityDisplayNode, { category: s_output });
 
-    baklava.editor.registerNodeType(ExpressionNode, {category: s_calculate});
-    baklava.editor.registerNodeType(LinearRegressionNode, {category: s_calculate});
+    baklava.editor.registerNodeType(ExpressionNode, { category: s_calculate });
+    baklava.editor.registerNodeType(LinearRegressionNode, { category: s_calculate });
 
-    baklava.editor.registerNodeType(MeasurerInputNode, {category: s_measure});
-    baklava.editor.registerNodeType(MeasureNode, {category: s_measure});
+    baklava.editor.registerNodeType(MeasurerInputNode, { category: s_measure });
+    baklava.editor.registerNodeType(MeasureNode, { category: s_measure });
 
     const nodeInterfaceTypes = new BaklavaInterfaceTypes(baklava.editor, { viewPlugin: baklava });
     nodeInterfaceTypes.addTypes(quantityType, quantitySingleType, quantityArrayType, measurerType);
