@@ -44,20 +44,12 @@ export default defineNode({
       const { k, b, r2 } = leastSquare(x, y, confidence);
       return { k, b, r2: "r^2="+r2.toFixed(4), export: [xn, yn], error: "" };
     } catch (e) {
-      let message: string = "";
-      if (typeof e === "string") {
-        message = e;
-      } else if (e instanceof Error) {
-        message = e.message;
-      } else {
-        message = "Unknown error";
-      }
       return {
         k: new FQuantity(1),
         b: new FQuantity(0),
         r2: "",
         export: [xn, yn],
-        error: message,
+        error: e,
       };
     }
   },

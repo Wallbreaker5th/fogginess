@@ -44,19 +44,11 @@ export default defineNode({
         error: "",
       };
     } catch (e) {
-      let message: string = "";
-      if (typeof e === "string") {
-        message = e;
-      } else if (e instanceof Error) {
-        message = e.message;
-      } else {
-        message = "Unknown error";
-      }
       return {
         absolute: "",
         relative: "",
         inRange: "",
-        error: message,
+        error: e,
       };
     }
   },

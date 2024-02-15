@@ -75,22 +75,10 @@ export default defineDynamicNode({
         error: "",
       };
     } catch (e) {
-      if (typeof e === "string") {
-        return {
-          result: [],
-          error: e,
-        };
-      } else if (e instanceof Error) {
-        return {
-          result: [],
-          error: e.message,
-        };
-      } else {
-        return {
-          result: [],
-          error: "Unknown error",
-        };
-      }
+      return {
+        result: [],
+        error: e,
+      };
     }
   },
 });
