@@ -1,7 +1,8 @@
-import { defineNode, setType, NodeInterface, TextInterface } from "baklavajs";
+import { defineNode, setType, NodeInterface } from "baklavajs";
 import { FQuantity } from "../../math/FQuantity";
 import { quantitySingleType } from "../InterfaceTypes";
 import { ErrorDisplayInterface } from "../interface/ErrorDisplayInterface";
+import { TextInterface } from "../interface/BasicInterfaces";
 import { math } from "../../math/math";
 
 export default defineNode({
@@ -27,7 +28,7 @@ export default defineNode({
   },
   calculate({ exact, approximate }) {
     try{
-      const map = new Map<string, FQuantity>([
+      const map = new Map([
         ["e", exact],
         ["a", new FQuantity(approximate.number.v, approximate.unit)],
       ]);

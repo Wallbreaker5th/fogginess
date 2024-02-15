@@ -1,7 +1,7 @@
-import { defineNode, setType, NodeInterface, SelectInterface } from "baklavajs";
+import { defineNode, setType, NodeInterface } from "baklavajs";
 import { markRaw } from "vue";
 import { UnitInterface } from "../interface/UnitInterface";
-import { NumberInterface } from "../interface/NumberInterface";
+import { NumberInterface, SelectInterface } from "../interface/BasicInterfaces";
 import { DistributionType, FMeasurer } from "../../math/FMeasurer";
 import { measurerType } from "../InterfaceTypes";
 import { FQuantity } from "../../math/FQuantity";
@@ -36,7 +36,7 @@ export default defineNode({
       ).use(setType, measurerType),
   },
   calculate({ unit, MPE, EE, distributionType }) {
-    let output: FMeasurer;
+    let output;
     output = new FMeasurer(unit, MPE, EE, distributionType, true);
     return { output };
   },

@@ -1,10 +1,10 @@
 import {
   defineDynamicNode,
   NodeInterface,
-  TextInputInterface,
   setType,
 } from "baklavajs";
 import { QuantityInputInterface } from "../interface/QuantityInputInterface";
+import { TextInputInterface } from "../interface/BasicInterfaces";
 import { FQuantity } from "../../math/FQuantity";
 import { quantityType } from "../InterfaceTypes";
 import { math } from "../../math/math";
@@ -15,7 +15,7 @@ export default defineDynamicNode({
   title: "🧮表达式求值",
   inputs: {
     expression: () =>
-      new TextInputInterface<String>("表达式", "x").setPort(false),
+      new TextInputInterface("表达式", "x").setPort(false),
   },
   outputs: {
     result: () =>
@@ -23,7 +23,7 @@ export default defineDynamicNode({
         "Result",
         new FQuantity(1)
       ).use(setType, quantityType),
-    error: () => new ErrorDisplayInterface("Error", ""),
+    error: () => new ErrorDisplayInterface("", "").setPort(false),
   },
   onUpdate({ expression }) {
     const symbols = new Set<string>();
@@ -71,7 +71,7 @@ export default defineDynamicNode({
           math.parse((inputs as { expression: string }).expression),
           vars
         ),
-        error: "",
+        error: "" as any,
       };
     } catch (e) {
       return {

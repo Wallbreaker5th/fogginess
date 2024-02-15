@@ -3,7 +3,7 @@ import {
   setType,
   NodeInterface,
 } from "baklavajs";
-import { NumberInterface } from "../interface/NumberInterface";
+import { NumberInterface } from "../interface/BasicInterfaces";
 import { UnitInterface } from "../interface/UnitInterface";
 import { FQuantity } from "../../math/FQuantity";
 import { quantityArrayType } from "../InterfaceTypes";

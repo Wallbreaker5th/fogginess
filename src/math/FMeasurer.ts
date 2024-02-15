@@ -118,4 +118,8 @@ export class FMeasurer {
     const v = mean(data.length, data, 1);
     return this.unit.mul(new FQuantity(new FNumber(v, u, p)));
   }
+
+  get uniqueKey(): string {
+    return `${this.unit.toString()} ${this.MPE} ${this.EE} ${this.distributionType} ${this.estimateDeltaB}`;
+  }
 }

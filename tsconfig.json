@@ -21,6 +21,7 @@
     "noFallthroughCasesInSwitch": true,
 
     // "types": ["element-plus/global"]
+    "allowJs": true,
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
   "references": [{ "path": "./tsconfig.node.json" }]

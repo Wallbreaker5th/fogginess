@@ -2,9 +2,10 @@
   <baklava-editor :view-model="baklava" />
 </template>
 
-<script lang="ts">
+<script lang="js">
 import { defineComponent } from "vue";
-import { BaklavaInterfaceTypes, EditorComponent, useBaklava, DependencyEngine, applyResult } from "baklavajs";
+import { BaklavaInterfaceTypes, DependencyEngine, applyResult } from "baklavajs";
+import { EditorComponent, useBaklava } from "@baklavajs/renderer-vue";
 import "@baklavajs/themes/dist/syrup-dark.css";
 import { quantityType, quantitySingleType, quantityArrayType, measurerType } from "./graph/InterfaceTypes";
 import ConstantQuantityInputNode from "./graph/node/ConstantQuantityInputNode";
@@ -22,7 +23,7 @@ import { FUnit } from "./math/FUnit";
 import { FQuantity } from "./math/FQuantity";
 import { FMeasurer } from "./math/FMeasurer";
 
-function foggify(json: any) {
+function foggify(json) {
   if (json.__FType) {
     switch (json.__FType) {
       case "FQuantity":
@@ -51,7 +52,7 @@ function foggify(json: any) {
   }
 }
 
-function download(text: string) {
+function download(text) {
   const blob = new Blob([text], { type: "text/plain" });
   const url = window.URL.createObjectURL(blob);
   const a = document.createElement("a");
@@ -69,7 +70,7 @@ export default defineComponent({
     save() {
       download(JSON.stringify(this.baklava.editor.save()));
     },
-    load(obj: any) {
+    load(obj) {
       this.baklava.editor.load(foggify(obj));
       console.log("Loaded");
     },
@@ -114,7 +115,7 @@ export default defineComponent({
     nodeInterfaceTypes.addTypes(quantityType, quantitySingleType, quantityArrayType, measurerType);
 
     if (localStorage.getItem("fogginess")) {
-      let json = JSON.parse(localStorage.getItem("fogginess")!);
+      let json = JSON.parse(localStorage.getItem("fogginess"));
       // Recursively check json, and replace any object with a __FType property with the correct type
       json = foggify(json);
       baklava.editor.load(json);

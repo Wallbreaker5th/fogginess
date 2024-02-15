@@ -1,5 +1,5 @@
 import { markRaw } from "vue";
-import { NodeInterface, setType } from "baklavajs";
+import { NodeInterface } from "baklavajs";
 import ErrorDisplay from "../component/ErrorDisplay.vue";
 
 export class ErrorDisplayInterface extends NodeInterface {

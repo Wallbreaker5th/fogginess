@@ -2,10 +2,9 @@ import {
   defineNode,
   setType,
   NodeInterface,
-  SelectInterface,
 } from "baklavajs";
 import { ConstantArrayInputInterface } from "../interface/ConstantArrayInputInterface";
-import { NumberInterface } from "../interface/NumberInterface";
+import { NumberInterface, SelectInterface } from "../interface/BasicInterfaces";
 import { FQuantity } from "../../math/FQuantity";
 import { FMeasurer } from "../../math/FMeasurer";
 import CommonMeasurers from "../../math/CommonMeasurers";
@@ -18,8 +17,8 @@ export default defineNode({
     values: () => new ConstantArrayInputInterface("度数", [0, 0, 0]),
     measurer: () => new SelectInterface<FMeasurer>("仪器", CommonMeasurers[0].measurer, CommonMeasurers.map((measurer) => ({
       text: measurer.name+" "+measurer.unitName,
-      value: measurer.measurer
-    }))).setPort(true).use(setType, measurerType),
+      value: measurer.measurer,
+    })), 'uniqueKey').setPort(true).use(setType, measurerType),
     p: () => new NumberInterface("置信度", 0.95).setPort(false),
   },
   outputs: {
@@ -30,7 +29,7 @@ export default defineNode({
       ).use(setType, quantitySingleType),
   },
   calculate({ values, measurer, p }) {
-    let output: FQuantity;
+    let output;
     output = measurer.measure(values, p);
     return { output };
   },

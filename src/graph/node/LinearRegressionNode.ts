@@ -1,6 +1,6 @@
-import { defineNode, setType, NodeInterface, TextInterface } from "baklavajs";
+import { defineNode, setType, NodeInterface } from "baklavajs";
 import { markRaw } from "vue";
-import { NumberInterface } from "../interface/NumberInterface";
+import { NumberInterface, TextInterface } from "../interface/BasicInterfaces";
 import { ErrorDisplayInterface } from "../interface/ErrorDisplayInterface";
 import { FQuantity } from "../../math/FQuantity";
 import { leastSquare } from "../../math/LeastSquare";

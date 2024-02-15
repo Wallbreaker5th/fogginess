@@ -1,6 +1,6 @@
 import { defineNode, NodeInterface, setType } from "baklavajs";
 import { UnitInterface } from "../interface/UnitInterface.ts";
-import { NumberInterface } from "../interface/NumberInterface.js";
+import { NumberInterface } from "../interface/BasicInterfaces.js";
 import { FQuantity } from "../../math/FQuantity.ts";
 import { quantitySingleType } from "../InterfaceTypes.ts";
 
