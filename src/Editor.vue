@@ -15,11 +15,12 @@ import QuantityInputNode from "./graph/node/QuantityInputNode";
 import MeasurerInputNode from "./graph/node/MeasurerInputNode";
 import MeasureNode from "./graph/node/MeasureNode";
 import LinearRegressionNode from "./graph/node/LinearRegressionNode";
+import ErrorNode from "./graph/node/ErrorNode";
+import ArithmeticSequenceNode from "./graph/node/ArithmeticSequenceNode";
 import { FNumber } from "./math/FNumber";
 import { FUnit } from "./math/FUnit";
 import { FQuantity } from "./math/FQuantity";
 import { FMeasurer } from "./math/FMeasurer";
-import ArithmeticSequenceNode from "./graph/node/ArithmeticSequenceNode";
 
 function foggify(json: any) {
   if (json.__FType) {
@@ -101,6 +102,7 @@ export default defineComponent({
     baklava.editor.registerNodeType(ArithmeticSequenceNode, { category: s_input });
 
     baklava.editor.registerNodeType(QuantityDisplayNode, { category: s_output });
+    baklava.editor.registerNodeType(ErrorNode, { category: s_output });
 
     baklava.editor.registerNodeType(ExpressionNode, { category: s_calculate });
     baklava.editor.registerNodeType(LinearRegressionNode, { category: s_calculate });
